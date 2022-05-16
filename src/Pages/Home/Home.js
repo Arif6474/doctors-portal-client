@@ -2,7 +2,7 @@ import React from 'react';
 import Banner from './Banner';
 import Comminucate from './Comminucate';
 import Dental from './Dental';
-import Footer from './Footer';
+import Footer from '../Shared/Footer';
 import Info from './Info';
 import MakeAppointment from './MakeAppointment';
 import Services from './Services';
