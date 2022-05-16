@@ -1,5 +1,5 @@
 import React from 'react';
-import PrimaryButton from '../Shared/PrimaryButton';
+
 
 
 const InfoCard = ({img, cardTitle, bgClass}) => {
