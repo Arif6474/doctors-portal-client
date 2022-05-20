@@ -4,8 +4,13 @@ import Loading from "../Shared/Loading";
 import User from "./User";
 
 const Users = () => {
-  const { isLoading, data: users } = useQuery("user", () =>
-    fetch("http://localhost:5000/user").then((res) => res.json())
+  const { data: users , isLoading , refetch } = useQuery("user", () =>
+    fetch("http://localhost:5000/user" ,{
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+    }).then((res) => res.json())
   );
 
   if (isLoading) {
@@ -15,19 +20,20 @@ const Users = () => {
   return (
     <div>
       <h3 className="text-2xl"> All Users {users.length} </h3>
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           <thead>
             <tr>
               <th></th>
               <th>Email</th>
-              <th>Id</th>
+              <th>Make Admin</th>
+              <th>Remove User</th>
               
             </tr>
           </thead>
           <tbody>
             {users.map((user , index) => (
-              <User key={user._id} user={user} index={index}></User>
+              <User key={user._id} user={user} refetch= {refetch} index={index}></User>
             ))}
           </tbody>
         </table>

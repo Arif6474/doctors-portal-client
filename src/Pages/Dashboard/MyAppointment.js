@@ -7,7 +7,7 @@ import auth from "../../firebase.init";
 const MyAppointment = () => {
   const [appointments, setAppointments] = useState([]);
   const [user] = useAuthState(auth);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     if (user) {
       fetch(`http://localhost:5000/booking?patient=${user.email}`, {
@@ -27,7 +27,7 @@ const MyAppointment = () => {
         })
         .then((data) => setAppointments(data));
     }
-  }, [user , navigate]);
+  }, [user, navigate]);
 
   return (
     <div>
